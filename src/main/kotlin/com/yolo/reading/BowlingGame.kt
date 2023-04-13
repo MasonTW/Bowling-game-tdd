@@ -1,13 +1,19 @@
 package com.yolo.reading
 
 class BowlingGame {
-    private var scores = 0
+    private var bowls: MutableList<Int> = mutableListOf()
     fun hit(bowl: Int) {
-        scores += bowl
+        bowls.add(bowl)
     }
 
     fun getScoreForFirstFrame(): Int {
-        return scores
+        val scoreWithoutBonus = bowls[0] + bowls[1]
+        if (isSpare()) {
+            return scoreWithoutBonus + bowls[2]
+        }
+        return scoreWithoutBonus
     }
+
+    private fun isSpare() = bowls[0] + bowls[1] == 10
 
 }
