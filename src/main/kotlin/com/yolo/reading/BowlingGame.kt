@@ -10,12 +10,12 @@ class BowlingGame {
     fun getScoreByFrame(frame: Int): Int {
         val startIndex = getIndexByFrame(frame)
         if (isStrike(frame) || isSpare(frame)) {
-            return getStrikeOrSpareScore(startIndex, 3)
+            return getScore(startIndex, 3)
         }
-        return getStrikeOrSpareScore(startIndex, 2)
+        return getScore(startIndex, 2)
     }
 
-    private fun getStrikeOrSpareScore(startIndex: Int, count: Int): Int {
+    private fun getScore(startIndex: Int, count: Int): Int {
         var sum = 0
         var currentCount = 0
         var index = startIndex
