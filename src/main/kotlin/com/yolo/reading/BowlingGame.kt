@@ -24,11 +24,12 @@ class BowlingGame {
         bowls[this] == 10
     }
 
-    fun getScoreForSecondFrame(): Int {
-        if (isSpare(frame = 2) || isStrike(frame = 2)) {
-            return bowls[2] + bowls[3] + bowls[4]
+    fun getScoreForSecondFrame(frame: Int = 2): Int {
+        var startIndex = getIndexByFrame(frame)
+        if (isStrike(frame) || isSpare(frame)) {
+            return bowls[startIndex] + bowls[startIndex + 1] + bowls[startIndex + 2]
         }
-        return bowls[2] + bowls[3]
+        return bowls[startIndex] + bowls[startIndex + 1]
     }
 
     companion object {
