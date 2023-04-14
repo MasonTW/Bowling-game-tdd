@@ -3,9 +3,7 @@ class BowlingGame {
     private var bowls: MutableList<Int?> = mutableListOf()
     fun hit(bowl: Int) {
         bowls.add(bowl)
-        if (bowl == 10){
-            bowls.add(null)
-        }
+        fixWhenStrike(bowl)
     }
 
     fun getScoreByFrame(frame: Int): Int {
@@ -41,6 +39,12 @@ class BowlingGame {
 
     private fun isStrike(frame: Int) = getIndexByFrame(frame).run {
         bowls[this] == 10
+    }
+    
+    private fun fixWhenStrike(bowl: Int) {
+        if (bowl == 10) {
+            bowls.add(null)
+        }
     }
 
     companion object {
