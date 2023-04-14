@@ -15,13 +15,13 @@ class BowlingGame {
     }
 
     private fun isSpare(frame: Int) = getIndexByFrame(frame).run {
-        bowls[this * COUNT_OF_EACH_FRAME] + bowls[this * COUNT_OF_EACH_FRAME + 1] == 10
+        bowls[this] + bowls[this + 1] == 10
     }
 
-    private fun getIndexByFrame(frame: Int) = (frame - 1)
+    private fun getIndexByFrame(frame: Int) = COUNT_OF_EACH_FRAME * (frame - 1)
 
     private fun isStrike(frame: Int) = getIndexByFrame(frame).run {
-        bowls[this * COUNT_OF_EACH_FRAME] == 10
+        bowls[this] == 10
     }
 
     fun getScoreForSecondFrame(): Int {
