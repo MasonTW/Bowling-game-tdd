@@ -127,4 +127,15 @@ class BowlingGameTests {
         }
     }
 
+    @Test
+    fun `should return 30 in every frame when all strike`() {
+        BowlingGame().run {
+            repeat(12) { this.hit(bowl = 10) }
+
+            repeat(10) {
+                assertEquals(30, this.getScoreByFrame(it + 1))
+            }
+        }
+    }
+
 }
