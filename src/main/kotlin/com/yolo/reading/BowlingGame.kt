@@ -6,11 +6,12 @@ class BowlingGame {
         bowls.add(bowl)
     }
 
-    fun getScoreForFirstFrame(): Int {
-        if (isStrike(frame = 1) || isSpare(frame = 1)) {
-            return bowls[0] + bowls[1] + bowls[2]
+    fun getScoreForFirstFrame(frame: Int = 1): Int {
+        var startIndex = getIndexByFrame(frame)
+        if (isStrike(frame) || isSpare(frame)) {
+            return bowls[startIndex] + bowls[startIndex + 1] + bowls[startIndex + 2]
         }
-        return bowls[0] + bowls[1]
+        return bowls[startIndex] + bowls[startIndex + 1]
     }
 
     private fun isSpare(frame: Int) = getIndexByFrame(frame).run {
