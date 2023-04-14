@@ -7,7 +7,7 @@ class BowlingGame {
     }
 
     fun getScoreForFirstFrame(): Int {
-        if (isStrike() || isSpare(frame = 1)) {
+        if (isStrike(frame = 1) || isSpare(frame = 1)) {
             return bowls[0] + bowls[1] + bowls[2]
         }
         return bowls[0] + bowls[1]
@@ -18,8 +18,6 @@ class BowlingGame {
     }
 
     private fun getIndexByFrame(frame: Int) = (frame - 1)
-
-    private fun isStrike() = bowls[0] == 10
 
     private fun isStrike(frame: Int) = getIndexByFrame(frame).run {
         bowls[this * COUNT_OF_EACH_FRAME] == 10
