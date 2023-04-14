@@ -84,4 +84,18 @@ class BowlingGameTests {
         }
     }
 
+    @Test
+    fun `should return second score when hit spare twice`(){
+        BowlingGame().run {
+            this.hit(bowl = 2)
+            this.hit(bowl = 8)
+            this.hit(bowl = 1)
+            this.hit(bowl = 9)
+            this.hit(bowl = 2)
+            assertEquals(11, this.getScoreForFirstFrame())
+            assertEquals(12, this.getScoreForSecondFrame())
+
+        }
+    }
+
 }
