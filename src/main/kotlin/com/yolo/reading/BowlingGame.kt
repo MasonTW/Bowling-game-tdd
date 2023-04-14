@@ -14,7 +14,7 @@ class BowlingGame {
     }
 
     private fun isSpare(frame: Int) = getIndexByFrame(frame).run {
-        bowls[this*2] + bowls[this*2+1] == 10
+        bowls[this * COUNT_OF_EACH_FRAME] + bowls[this * COUNT_OF_EACH_FRAME + 1] == 10
     }
 
     private fun getIndexByFrame(frame: Int) = (frame - 1)
@@ -26,6 +26,10 @@ class BowlingGame {
             return bowls[2] + bowls[3] + bowls[4]
         }
         return bowls[2] + bowls[3]
+    }
+
+    companion object {
+        const val COUNT_OF_EACH_FRAME = 2
     }
 
 }
