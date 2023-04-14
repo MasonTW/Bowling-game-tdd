@@ -147,4 +147,33 @@ class BowlingGameTests {
         }
     }
 
+    @Test
+    fun `should return 150 when all spare`() {
+        BowlingGame().run {
+            repeat(21) { this.hit(bowl = 5) }
+
+            assertEquals(150, this.getTotalScore())
+        }
+    }
+
+    @Test
+    fun `should return 80 total score when all hit 4`() {
+        BowlingGame().run {
+            repeat(20) { this.hit(bowl = 4) }
+
+            assertEquals(80, this.getTotalScore())
+        }
+    }
+
+    @Test
+    fun `should correct total score`() {
+        val hitList = listOf(10, 7, 3, 9, 0, 10, 0, 8, 8, 2, 0, 6, 10, 10, 10, 10, 10)
+        BowlingGame().run {
+            hitList.forEach {
+                this.hit(it)
+            }
+            assertEquals(180, this.getTotalScore())
+        }
+    }
+
 }
