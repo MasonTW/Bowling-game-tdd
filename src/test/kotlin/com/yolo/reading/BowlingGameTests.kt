@@ -43,4 +43,18 @@ class BowlingGameTests {
             assertEquals(17, this.getScoreForFirstFrame())
         }
     }
+
+    @Test
+    fun `should return second score when hit normal twice`(){
+        BowlingGame().run {
+            this.hit(bowl = 1)
+            this.hit(bowl = 2)
+            this.hit(bowl = 3)
+            this.hit(bowl = 4)
+            assertEquals(3, this.getScoreForFirstFrame())
+            assertEquals(7, this.getScoreForSecondFrame())
+
+        }
+    }
+
 }

@@ -17,4 +17,8 @@ class BowlingGame {
 
     private fun isStrike() = bowls[0] == 10
 
+    fun getScoreForSecondFrame(): Int {
+        return bowls[2] + bowls[3]
+    }
+
 }
