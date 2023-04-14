@@ -10,7 +10,7 @@ class BowlingGameTests {
         BowlingGame().run {
             this.hit(bowl = 0)
             this.hit(bowl = 0)
-            assertEquals(0, this.getScoreForFirstFrame())
+            assertEquals(0, this.getScoreByFrame(1))
         }
     }
 
@@ -19,7 +19,7 @@ class BowlingGameTests {
         BowlingGame().run {
             this.hit(bowl = 1)
             this.hit(bowl = 2)
-            assertEquals(3, this.getScoreForFirstFrame())
+            assertEquals(3, this.getScoreByFrame(1))
         }
     }
 
@@ -30,7 +30,7 @@ class BowlingGameTests {
             this.hit(bowl = 7)
             this.hit(bowl = 5)
             this.hit(bowl = 3)
-            assertEquals(15, this.getScoreForFirstFrame())
+            assertEquals(15, this.getScoreByFrame(1))
         }
     }
 
@@ -40,7 +40,7 @@ class BowlingGameTests {
             this.hit(bowl = 10)
             this.hit(bowl = 5)
             this.hit(bowl = 2)
-            assertEquals(17, this.getScoreForFirstFrame())
+            assertEquals(17, this.getScoreByFrame(1))
         }
     }
 
@@ -51,8 +51,8 @@ class BowlingGameTests {
             this.hit(bowl = 2)
             this.hit(bowl = 3)
             this.hit(bowl = 4)
-            assertEquals(3, this.getScoreForFirstFrame())
-            assertEquals(7, this.getScoreForSecondFrame())
+            assertEquals(3, this.getScoreByFrame(1))
+            assertEquals(7, this.getScoreByFrame(2))
 
         }
     }
@@ -65,8 +65,8 @@ class BowlingGameTests {
             this.hit(bowl = 3)
             this.hit(bowl = 7)
             this.hit(bowl = 5)
-            assertEquals(3, this.getScoreForFirstFrame())
-            assertEquals(15, this.getScoreForSecondFrame())
+            assertEquals(3, this.getScoreByFrame(1))
+            assertEquals(15, this.getScoreByFrame(2))
 
         }
     }
@@ -78,8 +78,8 @@ class BowlingGameTests {
             this.hit(bowl = 10)
             this.hit(bowl = 5)
             this.hit(bowl = 2)
-            assertEquals(3, this.getScoreForFirstFrame())
-            assertEquals(17, this.getScoreForSecondFrame())
+            assertEquals(3, this.getScoreByFrame(1))
+            assertEquals(17, this.getScoreByFrame(2))
 
         }
     }
@@ -92,8 +92,8 @@ class BowlingGameTests {
             this.hit(bowl = 1)
             this.hit(bowl = 9)
             this.hit(bowl = 2)
-            assertEquals(11, this.getScoreForFirstFrame())
-            assertEquals(12, this.getScoreForSecondFrame())
+            assertEquals(11, this.getScoreByFrame(1))
+            assertEquals(12, this.getScoreByFrame(2))
 
         }
     }
@@ -107,8 +107,8 @@ class BowlingGameTests {
             this.hit(bowl = 10)
             this.hit(bowl = 1)
             this.hit(bowl = 2)
-            assertEquals(20, this.getScoreForFirstFrame())
-            assertEquals(13, this.getScoreForSecondFrame())
+            assertEquals(20, this.getScoreByFrame(1))
+            assertEquals(13, this.getScoreByFrame(2))
 
         }
     }
