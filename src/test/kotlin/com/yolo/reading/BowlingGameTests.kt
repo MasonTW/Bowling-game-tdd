@@ -45,7 +45,7 @@ class BowlingGameTests {
     }
 
     @Test
-    fun `should return second score when hit normal twice`(){
+    fun `should return second score when hit normal twice`() {
         BowlingGame().run {
             this.hit(bowl = 1)
             this.hit(bowl = 2)
@@ -58,7 +58,7 @@ class BowlingGameTests {
     }
 
     @Test
-    fun `should return second score when hit spare in the second`(){
+    fun `should return second score when hit spare in the second`() {
         BowlingGame().run {
             this.hit(bowl = 1)
             this.hit(bowl = 2)
@@ -70,8 +70,9 @@ class BowlingGameTests {
 
         }
     }
+
     @Test
-    fun `should return second score when hit strike in the second`(){
+    fun `should return second score when hit strike in the second`() {
         BowlingGame().run {
             this.hit(bowl = 1)
             this.hit(bowl = 2)
@@ -85,7 +86,7 @@ class BowlingGameTests {
     }
 
     @Test
-    fun `should return second score when hit spare twice`(){
+    fun `should return second score when hit spare twice`() {
         BowlingGame().run {
             this.hit(bowl = 2)
             this.hit(bowl = 8)
@@ -100,13 +101,26 @@ class BowlingGameTests {
 
 
     @Test
-    fun `should return second score when hit spare and strike`(){
+    fun `should return second score when hit spare and strike`() {
         BowlingGame().run {
             this.hit(bowl = 2)
             this.hit(bowl = 8)
             this.hit(bowl = 10)
             this.hit(bowl = 1)
             this.hit(bowl = 2)
+            assertEquals(20, this.getScoreByFrame(1))
+            assertEquals(13, this.getScoreByFrame(2))
+
+        }
+    }
+
+    @Test
+    fun `should return second score when hit strike and spare`() {
+        BowlingGame().run {
+            this.hit(bowl = 10)
+            this.hit(bowl = 5)
+            this.hit(bowl = 5)
+            this.hit(bowl = 3)
             assertEquals(20, this.getScoreByFrame(1))
             assertEquals(13, this.getScoreByFrame(2))
 
