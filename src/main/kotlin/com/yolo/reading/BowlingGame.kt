@@ -1,4 +1,5 @@
 package com.yolo.reading
+
 class BowlingGame {
     private var bowls: MutableList<Int?> = mutableListOf()
     fun hit(bowl: Int) {
@@ -9,20 +10,20 @@ class BowlingGame {
     fun getScoreByFrame(frame: Int): Int {
         val startIndex = getIndexByFrame(frame)
         if (isStrike(frame) || isSpare(frame)) {
-            return getStrikeOrSpareScore(startIndex)
+            return getStrikeOrSpareScore(startIndex, 3)
         }
-        return bowls[startIndex]!! + bowls[startIndex + 1]!!
+        return getStrikeOrSpareScore(startIndex, 2)
     }
 
-    private fun getStrikeOrSpareScore(startIndex: Int): Int {
+    private fun getStrikeOrSpareScore(startIndex: Int, count: Int): Int {
         var sum = 0
-        var count = 0
+        var currentCount = 0
         var index = startIndex
-        while (count < 3 && index < bowls.size) {
+        while (currentCount < count && index < bowls.size) {
             bowls[index].let {
                 if (it != null) {
                     sum += it
-                    count++
+                    currentCount++
                 }
                 index++
             }
@@ -31,8 +32,12 @@ class BowlingGame {
     }
 
 
-    private fun isSpare(frame: Int) = getIndexByFrame(frame).run {
-        bowls[this]!! + bowls[this + 1]!! == 10
+    private fun isSpare(frame: Int): Boolean {
+        val index = getIndexByFrame(frame)
+        val first = bowls[index]
+        val second = bowls[index + 1]
+        return if (first == null || second == null) false
+        else first + second == 10
     }
 
     private fun getIndexByFrame(frame: Int) = COUNT_OF_EACH_FRAME * (frame - 1)
@@ -40,7 +45,7 @@ class BowlingGame {
     private fun isStrike(frame: Int) = getIndexByFrame(frame).run {
         bowls[this] == 10
     }
-    
+
     private fun fixWhenStrike(bowl: Int) {
         if (bowl == 10) {
             bowls.add(null)
