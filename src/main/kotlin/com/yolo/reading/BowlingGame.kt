@@ -13,9 +13,11 @@ class BowlingGame {
         return bowls[0] + bowls[1]
     }
 
-    private fun isSpare(frame: Int) = (frame-1).run {
+    private fun isSpare(frame: Int) = getIndexByFrame(frame).run {
         bowls[this*2] + bowls[this*2+1] == 10
     }
+
+    private fun getIndexByFrame(frame: Int) = (frame - 1)
 
     private fun isStrike() = bowls[0] == 10
 
