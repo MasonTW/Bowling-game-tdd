@@ -7,6 +7,9 @@ class BowlingGame {
     }
 
     fun getScoreForFirstFrame(): Int {
+        if(isStrike()){
+            return bowls[0] + bowls[1] + bowls[2]
+        }
         val scoreWithoutBonus = bowls[0] + bowls[1]
         if (isSpare()) {
             return scoreWithoutBonus + bowls[2]
@@ -15,5 +18,7 @@ class BowlingGame {
     }
 
     private fun isSpare() = bowls[0] + bowls[1] == 10
+
+    private fun isStrike() = bowls[0] == 10
 
 }

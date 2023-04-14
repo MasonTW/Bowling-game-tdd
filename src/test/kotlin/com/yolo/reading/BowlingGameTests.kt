@@ -33,4 +33,14 @@ class BowlingGameTests {
             assertEquals(15, this.getScoreForFirstFrame())
         }
     }
+
+    @Test
+    fun `should return 17 when hit 10, 5 and 2`() {
+        BowlingGame().run {
+            this.hit(bowl = 10)
+            this.hit(bowl = 5)
+            this.hit(bowl = 2)
+            assertEquals(17, this.getScoreForFirstFrame())
+        }
+    }
 }
