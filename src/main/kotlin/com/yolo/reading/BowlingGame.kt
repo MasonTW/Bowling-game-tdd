@@ -21,8 +21,12 @@ class BowlingGame {
 
     private fun isStrike() = bowls[0] == 10
 
+    private fun isStrike(frame: Int) = getIndexByFrame(frame).run {
+        bowls[this * COUNT_OF_EACH_FRAME] == 10
+    }
+
     fun getScoreForSecondFrame(): Int {
-        if (isSpare(frame = 2)) {
+        if (isSpare(frame = 2) || isStrike(frame = 2)) {
             return bowls[2] + bowls[3] + bowls[4]
         }
         return bowls[2] + bowls[3]
