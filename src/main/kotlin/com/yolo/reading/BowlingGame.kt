@@ -2,6 +2,14 @@ package com.yolo.reading
 
 class BowlingGame {
     private var bowls: MutableList<Int?> = mutableListOf()
+    fun getTotalScore(): Int {
+        var totalScore = 0
+        repeat(10) {
+            totalScore += getScoreByFrame(it + 1)
+        }
+        return totalScore
+    }
+
     fun hit(bowl: Int) {
         bowls.add(bowl)
         fixWhenStrike(bowl)

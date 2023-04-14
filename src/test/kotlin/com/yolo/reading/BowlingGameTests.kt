@@ -138,4 +138,13 @@ class BowlingGameTests {
         }
     }
 
+    @Test
+    fun `should return 300 when all strike`() {
+        BowlingGame().run {
+            repeat(12) { this.hit(bowl = 10) }
+
+            assertEquals(300, this.getTotalScore())
+        }
+    }
+
 }
